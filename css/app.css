@@ -283,6 +283,11 @@ input[type=date].btn{padding:4px 8px;font-family:'Barlow Semi Condensed',sans-se
 #syncDlg input:focus{border-color:#9fae7c}
 #syncDlg .acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:12px}
 #sMsg{margin:10px 0 0;min-height:1.2em;font-size:12px}
+#syncDlg .smodes{display:flex;gap:6px;margin:8px 0 10px}
+#syncDlg .smodes .btn{flex:1}
+#syncDlg .steps{margin:6px 0 8px;padding-left:20px;font-size:12px;line-height:1.7}
+#syncDlg .steps a,#sGistInfo a{color:#4f7a5f;font-weight:500}
+#syncDlg[data-mode=gist] .only-repo,#syncDlg[data-mode=repo] .only-gist,#syncDlg:not([data-mode]) .only-repo{display:none}
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:80;background:#2e2b28;color:#fff;padding:9px 16px;border-radius:10px;font:400 13px 'Noto Sans TC',sans-serif;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw}
 #toast.show{opacity:1;transform:translate(-50%,0)}
 

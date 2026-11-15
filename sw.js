@@ -2,7 +2,7 @@
 // Strategy: network-first for our own files (so updates show up right away),
 // falling back to the cache when offline. Google Fonts are cache-first.
 // GitHub API calls (sync) are never cached.
-const CACHE = 'osplanner-v2';
+const CACHE = 'osplanner-v3';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './css/app.css',
   './js/app.js', './js/util.js', './js/store.js', './js/sync.js', './js/editor.js', './js/nav.js',

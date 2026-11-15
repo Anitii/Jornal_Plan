@@ -32,14 +32,26 @@ npm start
 
 ## 跨裝置同步設定
 
-> ⚠ 網頁 repo 是公開的。**計畫本內容請放在另一個 Private repo。**
+資料預設只存在這個瀏覽器。要讓手機、平板、電腦看到同一份，到 GitHub 建立權杖、在每台裝置貼上一次。
+
+### 方法一：秘密 Gist（預設、最簡單）
+
+1. 打開 [建立權杖（已預選 gist）](https://github.com/settings/tokens/new?scopes=gist&description=OS%20Planner%20sync)，只勾 **gist**，設定到期日，按 Generate token，複製。
+2. 打開計畫本 → **☁ 同步** → 選「秘密 Gist」→ 貼上權杖 → 儲存並同步。第一台裝置會自動在你帳號建立一個秘密 Gist（檔名 `planner-2026.json`）。
+3. 其他裝置貼上**同一個**權杖即可，會自動找到同一個 Gist。
+
+> 秘密 Gist 不會出現在搜尋或你的公開頁面，但**知道網址的人看得到**。內容很私密的話請用方法二。
+> 權杖只存在該裝置的瀏覽器，請勿在共用電腦上使用；權杖過期後重新建立、在每台裝置重貼即可。
+
+### 方法二：Private repo（進階、完全私密）
 
 1. 建立 Private repo，例如 `Jornal_Plan_data`。
-2. GitHub Settings → Developer settings → **Fine-grained tokens** → Generate new token：只選 `Jornal_Plan_data`，權限 **Contents：Read and write**。
-3. 打開計畫本 → **☁ 同步** → 填帳號、`Jornal_Plan_data`、`planner-2026.json`、token → 儲存並同步。
-4. 每台裝置做一次第 3 步。
+2. GitHub Settings → Developer settings → **Fine-grained tokens**：只選 `Jornal_Plan_data`，權限 **Contents：Read and write**。
+3. **☁ 同步** → 選「Private repo」→ 填帳號、repo 名稱、token → 儲存並同步。每台裝置做一次。
 
-打字停下約 3 秒自動上傳；打開網頁、切回分頁、每 60 秒自動下載。兩台裝置改不同格子都會保留，改同一格以最後修改為準。Token 只存在該裝置的瀏覽器。
+### 同步怎麼運作
+
+打字停下約 3 秒自動上傳；打開網頁、切回分頁、每 60 秒自動下載。每個格子各自記錄修改時間：兩台裝置改不同格子都會保留，改同一格以最後修改為準，刪除也會同步。
 
 ## 專案結構
 

@@ -58,14 +58,27 @@
 </div>
 
 <div id="syncDlg"><div class="box">
-  <h3>☁ 跨裝置同步（GitHub）</h3>
-  <p class="hint">你的內容會存成 GitHub repo 裡的一個 JSON 檔，每台裝置都連到同一個檔案就能同步。<b>請用 Private repo 放資料</b>（不要用放網頁的公開 repo）。</p>
-  <label>GitHub 帳號<input id="sOwner" placeholder="你的 GitHub 帳號" autocomplete="off" spellcheck="false"></label>
-  <label>資料 repo 名稱<input id="sRepo" placeholder="例如 Jornal_Plan_data（Private）" autocomplete="off" spellcheck="false"></label>
-  <label>檔案路徑<input id="sPath" placeholder="planner-2026.json" autocomplete="off" spellcheck="false"></label>
-  <label>分支（可留空）<input id="sBranch" placeholder="留空＝預設分支" autocomplete="off" spellcheck="false"></label>
-  <label>Personal access token<input id="sToken" type="password" placeholder="github_pat_…" autocomplete="off" spellcheck="false"></label>
-  <p class="hint">Token 只存在這台裝置的瀏覽器裡，只用來呼叫 GitHub API。建議用 Fine-grained token，只授權資料 repo 的「Contents：Read and write」。</p>
+  <h3>☁ 跨裝置同步</h3>
+  <p class="hint">資料預設只存在這個瀏覽器。要讓手機、平板、電腦看到同一份，請到 GitHub 建立權杖，在每台裝置貼上一次。</p>
+  <div class="smodes"><button class="btn" data-smode="gist">秘密 Gist（簡單）</button><button class="btn" data-smode="repo">Private repo（進階）</button></div>
+
+  <div class="only-gist">
+    <ol class="steps">
+      <li><a href="https://github.com/settings/tokens/new?scopes=gist&amp;description=OS%20Planner%20sync" target="_blank" rel="noopener">點這裡建立權杖</a>（已幫你只勾 <b>gist</b>）→ 設定到期日 → 最下面 Generate token → 複製</li>
+      <li>貼到下面，按「儲存並同步」</li>
+      <li>其他裝置貼上<b>同一個</b>權杖即可，會自動找到同一份資料</li>
+    </ol>
+  </div>
+  <div class="only-repo">
+    <label>GitHub 帳號<input id="sOwner" placeholder="你的 GitHub 帳號" autocomplete="off" spellcheck="false"></label>
+    <label>資料 repo 名稱（請用 Private）<input id="sRepo" placeholder="例如 Jornal_Plan_data" autocomplete="off" spellcheck="false"></label>
+    <label>檔案路徑<input id="sPath" placeholder="planner-2026.json" autocomplete="off" spellcheck="false"></label>
+    <label>分支（可留空）<input id="sBranch" placeholder="留空＝預設分支" autocomplete="off" spellcheck="false"></label>
+  </div>
+  <label>權杖（Personal access token）<input id="sToken" type="password" placeholder="ghp_… 或 github_pat_…" autocomplete="off" spellcheck="false"></label>
+  <p class="hint only-gist">資料會存進你帳號裡的<b>秘密 Gist</b>（不會出現在搜尋或你的公開頁面，但知道網址的人看得到）。權杖只存在這個瀏覽器，請勿在共用電腦上使用。</p>
+  <p class="hint only-repo">建議用 Fine-grained token，只授權資料 repo 的「Contents：Read and write」。權杖只存在這個瀏覽器。</p>
+  <p class="hint" id="sGistInfo"></p>
   <div class="acts"><button class="btn on" id="sSave">儲存並同步</button><button class="btn" id="sNow">立即同步</button><button class="btn" id="sOff">中斷連線</button><span class="sp"></span><button class="btn" id="sClose">關閉</button></div>
   <p id="sMsg"></p>
 </div></div>
